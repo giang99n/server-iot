@@ -61,7 +61,9 @@ db.once('open', () =>{
 app.use(express.json());
 
 //Use middleware to enable cors
-app.use(cors());
+app.use(cors({
+    origin: '*'
+}));
 
 //Route middleware
 route(app);
