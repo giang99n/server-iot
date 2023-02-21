@@ -25,4 +25,4 @@ app.use(cors());
 route(app);
 
 //Start an express server
-app.listen(process.env.PORT || 4000, () => console.log(`Server Started http://localhost:4000`));
+app.listen(process.env.PORT || 4000, () => console.log(`Server Started` ));
