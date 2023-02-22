@@ -32,6 +32,35 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.post('/update/:id', async (req, res) => {
+    try {
+        User.findOneAndUpdate({_id: req.params.id},
+            {
+                $set : {
+                    name: req.body.name,
+                    email: req.body.email,
+                    role: req.body.role,
+                    phone:req.body.phone,
+                    address:req.body.address,
+                    location:req.body.location
+                }
+            },
+            { new: true },
+            (err, user) =>{
+                if (err) {
+                    res.status(400).json({ message: err });
+                  } else  res.status(200).json({
+                    user
+                });
+            }  
+           
+        );
+        
+    
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+});
 router.patch('/update/:id', async (req, res) => {
     try {
         User.findOneAndUpdate({_id: req.params.id},
@@ -40,6 +69,9 @@ router.patch('/update/:id', async (req, res) => {
                     name: req.body.name,
                     email: req.body.email,
                     role: req.body.role,
+                    phone:req.body.phone,
+                    address:req.body.address,
+                    location:req.body.location
                 }
             },
             { new: true },
