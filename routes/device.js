@@ -6,18 +6,22 @@ const auth = require('../middlewares/auth');
 // router.get('/', auth(['customer', 'admin']), async (req, res) => {
 router.get('/listDevice', async (req, res) => {
     try {
-        // let emailConvert = req.query.email.replace('%40','@');
-        // Device.find({deviceOwner: [req.query.email, emailConvert]}, function(err, devices) {
-        //     return res.status(200).json({
-        //         devices,
-        //     });
-        //   });
+        if(req.query.userId ==null || req.query.userId == '' ){
 
-        Device.find({userId: [req.query.userId]}, function(err, devices) {
-            return res.status(200).json({
-                devices,
-            });
-          });
+            Device.find({}, function(err, devices) {
+                return res.status(200).json({
+                    devices,
+                });
+              });
+        }else{
+            Device.find({userId: [req.query.userId]}, function(err, devices) {
+                return res.status(200).json({
+                    devices,
+                });
+              });
+        }
+
+      
     
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -34,7 +38,7 @@ router.get('/deviceRequestFix', async (req, res) => {
                     devices,
                 });
               });
-        }else Device.find({_id: req.query.userId, status:false }, function(err, devices) {
+        }else Device.find({userId: req.query.userId, status:false }, function(err, devices) {
             return res.status(200).json({
                 length: devices.length,
                 devices,
