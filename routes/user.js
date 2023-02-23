@@ -36,14 +36,15 @@ router.post('/update/:id', async (req, res) => {
     try {
         User.findOneAndUpdate({_id: req.params.id},
             {
-                $set : {
-                    name: req.body.name,
-                    email: req.body.email,
-                    role: req.body.role,
-                    phone:req.body.phone,
-                    address:req.body.address,
-                    location:req.body.location
-                }
+                $set : req.body
+                // $set : {
+                //     name: req.body.name,
+                //     email: req.body.email,
+                //     role: req.body.role,
+                //     phone:req.body.phone,
+                //     address:req.body.address,
+                //     location:req.body.location
+                // }
             },
             { new: true },
             (err, user) =>{
