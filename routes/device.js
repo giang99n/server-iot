@@ -56,11 +56,11 @@ router.patch('/update/:id', async (req, res) => {
                 $set : req.body
             },
             { new: true },
-            (err, user) =>{
+            (err, device) =>{
                 if (err) {
                     res.status(400).json({ message: err });
                   } else  res.status(200).json({
-                    user
+                    device
                 });
             }  
            
