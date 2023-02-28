@@ -266,5 +266,22 @@ const MONTHS_ARRAY = [ '01', '02', '03', '04', '05', '06', '07', '08', '09', '10
   }
 });
 
+router.get('/delete/:id', async (req, res) => {
+
+    try {
+        //Device.findOneAndRemove()
+        User.findByIdAndRemove(req.params.id, (err, doc) => {
+            if (!err) {
+                res.status(200).json({message: 'Delete success'});
+            } else {
+                res.status(400).json({ message: err });
+            }
+        });
+       // res.status(200).json(savedDevice);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
 
 module.exports = router;
