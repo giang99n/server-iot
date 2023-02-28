@@ -154,7 +154,7 @@ router.patch('/update/:id', async (req, res) => {
 router.get('/count', async (req, res) => {
   const FIRST_MONTH = 1
 const LAST_MONTH = 12
-const MONTHS_ARRAY = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ]
+const MONTHS_ARRAY = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12' ]
 
   let TODAY  = new Date();
   let YEAR_BEFORE  = new Date(TODAY.getFullYear() - 1, TODAY.getMonth(), TODAY.getDate());
