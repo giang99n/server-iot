@@ -9,6 +9,7 @@ const registerValidation = (data) => {
 		role: Joi.string().valid(
 			'admin',
 			'customer',
+			'support'
 		),
 		location: Joi.string().min(6).max(255).required(),
 		address: Joi.string().min(6).max(255).required(),

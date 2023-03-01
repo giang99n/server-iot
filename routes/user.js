@@ -163,6 +163,7 @@ const MONTHS_ARRAY = [ '01', '02', '03', '04', '05', '06', '07', '08', '09', '10
       User.aggregate([
         { 
           $match: { 
+              role: 'customer',
               createdDate: { $gte: YEAR_BEFORE, $lte: TODAY }
           }
       },
@@ -291,7 +292,6 @@ router.get('/userRequest', async (req,res)=>{
         await Promise.all(users.map(async (user) => {
             const devices = await Device.find({userId: user._id, status:false });
             if(devices.length > 0){
-                console.log(devices);
                 arrayResult.push({
                     user,
                     devices: devices
