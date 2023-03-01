@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const Device = require('../models/Device');
 const User = require('../models/User');
 const moment = require('moment');
 
@@ -283,5 +284,28 @@ router.get('/delete/:id', async (req, res) => {
     }
 });
 
+router.get('/userRequest', async (req,res)=>{ 
+    try {
+        var arrayResult = [];
+        const users = await User.find({});
+        await Promise.all(users.map(async (user) => {
+            const devices = await Device.find({userId: user._id, status:false });
+            if(devices.length > 0){
+                console.log(devices);
+                arrayResult.push({
+                    user,
+                    devices: devices
+                });
+                console.log(arrayResult);
+            }
+        }));
+        return res.status(200).json({
+            result: arrayResult
+        });
+    
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+});
 
 module.exports = router;
