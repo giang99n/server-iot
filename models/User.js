@@ -39,6 +39,21 @@ const userSchema = new mongoose.Schema({
 		required: true,
 		max: 255,
 	},
+	cityId: {
+		type: String,
+		required: true,
+		max: 255,
+	},
+	districtId: {
+		type: String,
+		required: true,
+		max: 255,
+	},
+	wardId: {
+		type: String,
+		required: true,
+		max: 255,
+	},
 	phone: {
 		type: String,
 		required: true,

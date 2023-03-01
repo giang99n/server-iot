@@ -16,6 +16,9 @@ const registerValidation = (data) => {
 		city: Joi.string().max(255).required(),
 		district: Joi.string().max(255).required(),
 		ward: Joi.string().max(255).required(),
+		cityId: Joi.string().max(255).required(),
+		districtId: Joi.string().max(255).required(),
+		wardId: Joi.string().max(255).required(),
 		phone:Joi.string()
 	});
 	return schema.validate(data);

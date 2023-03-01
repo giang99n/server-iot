@@ -14,7 +14,7 @@ router.get('/userList', async (req, res) => {
         //     });      
         //  });
         
-            const {role, address, city, district, ward } = req.query;
+            const {role, address, city, district, ward,cityId,districtId,wardId  } = req.query;
             var query = {};
             if (role) {
                 query.role = role;
@@ -31,7 +31,15 @@ router.get('/userList', async (req, res) => {
             if (ward) {
                 query.ward = ward;
             }
-    
+            if (cityId) {
+                query.cityId = cityId;
+            }
+            if (districtId) {
+                query.districtId = districtId;
+            }
+            if (wardId) {
+                query.wardId = wardId;
+            }
             const users =await  User.find(query);
             return res.status(200).json({
                 code:200,
