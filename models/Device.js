@@ -32,6 +32,7 @@ const userSchema = new mongoose.Schema({
 	},
 	status:{
 		type: Boolean,
+		default: true,
 	},
 
 });

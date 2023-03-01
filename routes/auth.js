@@ -30,7 +30,10 @@ router.post('/register', async (req, res) => {
         role: req.body.role,
         location: req.body.location,
         address: req.body.address,
-        phone:req.body.phone,
+        city: req.body.city,
+        district: req.body.district,
+        city: req.body.city,
+        ward:req.body.ward,
         supporterId: '',
         supporterName:''
     });

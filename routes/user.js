@@ -7,13 +7,36 @@ const moment = require('moment');
 // router.get('/', auth(['customer', 'admin']), async (req, res) => {
 router.get('/userList', async (req, res) => {
     try {
-        User.find({}, function(err, users) {
+        // User.find({}, function(err, users) {
+        //    return res.status(200).json({
+        //         code:200,
+        //         users,
+        //     });      
+        //  });
+        
+            const {role, address, city, district, ward } = req.query;
+            var query = {};
+            if (role) {
+                query.role = role;
+            }
+            if (address) {
+                query.address = address;
+            }
+            if (city) {
+                query.city = city;
+            }
+            if (district) {
+                query.district = district;
+            }
+            if (ward) {
+                query.ward = ward;
+            }
+    
+            const users =await  User.find(query);
             return res.status(200).json({
                 code:200,
-                users,
+                users
             });
-     
-          });
     
     } catch (error) {
         res.status(400).json({ message: error.message });

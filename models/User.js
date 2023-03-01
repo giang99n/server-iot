@@ -21,9 +21,23 @@ const userSchema = new mongoose.Schema({
 	},
 	address: {
 		type: String,
-		required: true,
 		max: 255,
 		min: 6,
+	},
+	city: {
+		type: String,
+		required: true,
+		max: 255,
+	},
+	district: {
+		type: String,
+		required: true,
+		max: 255,
+	},
+	ward: {
+		type: String,
+		required: true,
+		max: 255,
 	},
 	phone: {
 		type: String,
