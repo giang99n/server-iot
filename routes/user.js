@@ -260,8 +260,35 @@ router.get('/delete/:id', async (req, res) => {
 
 router.get('/userRequest', async (req,res)=>{ 
     try {
+        const {role, address, city, district, ward,cityId,districtId,wardId  } = req.query;
+        var query = {};
+        if (role) {
+            query.role = role;
+        }
+        if (address) {
+            query.address = address;
+        }
+        if (city) {
+            query.city = city;
+        }
+        if (district) {
+            query.district = district;
+        }
+        if (ward) {
+            query.ward = ward;
+        }
+        if (cityId) {
+            query.cityId = cityId;
+        }
+        if (districtId) {
+            query.districtId = districtId;
+        }
+        if (wardId) {
+            query.wardId = wardId;
+        }
+    
         var arrayResult = [];
-        const users = await User.find({});
+        const users = await User.find(query);
         await Promise.all(users.map(async (user) => {
             const devices = await Device.find({userId: user._id, status:false });
             if(devices.length > 0){
