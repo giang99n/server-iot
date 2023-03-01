@@ -34,6 +34,9 @@ router.post('/register', async (req, res) => {
         district: req.body.district,
         city: req.body.city,
         ward:req.body.ward,
+        districtId: req.body.districtId,
+        cityId: req.body.cityId,
+        wardId:req.body.wardId,
         supporterId: '',
         supporterName:''
     });
