@@ -2,7 +2,8 @@ const subscriberRouter = require('./subscribers');
 const authRouter = require('./auth');
 const sensorRouter = require('./sensor');
 const userRouter = require('./user');
-const deviceRouter = require('./device')
+const deviceRouter = require('./device');
+const reportRouter = require('./report');
 //Index of route middleware
 const route = (app) => {
 	//Route middleware subscribers
@@ -17,6 +18,8 @@ const route = (app) => {
 	app.use('/api/user', userRouter);
 
 	app.use('/api/device', deviceRouter);
+
+	app.use('/api/report', reportRouter);
 };
 
 module.exports = route;
