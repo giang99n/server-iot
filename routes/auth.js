@@ -30,7 +30,9 @@ router.post('/register', async (req, res) => {
         role: req.body.role,
         location: req.body.location,
         address: req.body.address,
-        phone:req.body.phone
+        phone:req.body.phone,
+        supporterId: '',
+        supporterName:''
     });
     try {
         const savedUser = await user.save();

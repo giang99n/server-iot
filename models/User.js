@@ -29,6 +29,12 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	supporterId: {
+		type: String,
+	},
+	supporterName: {
+		type: String,
+	},
 	password: {
 		type: String,
 		required: true,
