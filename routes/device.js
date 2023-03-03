@@ -8,6 +8,16 @@ router.get('/listDevice', async (req, res) => {
     try {
         if(req.query.userId ==null || req.query.userId == '' ){
 
+            // Device.updateMany(
+            //     {},
+            //     { $set: { isControl: true}},
+            //     { upsert: true },
+            //     function(err, result) {
+            //       if (err) throw err;
+            //       console.log(result.result.nModified + " documents updated");
+            //     }
+            //   );
+
             Device.find({}, function(err, devices) {
                 return res.status(200).json({
                     devices,

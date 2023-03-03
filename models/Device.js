@@ -32,6 +32,14 @@ const userSchema = new mongoose.Schema({
 	},
 	status:{
 		type: Boolean,
+		default: false,
+	},
+	statusRequest:{
+		type: Boolean,
+		default: true,
+	},
+	isControl:{
+		type: Boolean,
 		default: true,
 	},
 
