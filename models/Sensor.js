@@ -9,11 +9,15 @@ const sensorSchema = new mongoose.Schema({
 		type: Number,
 		required: true,
 	},
-	createdDate: {
-		type: Date,
-		default: Date.now,
+	gasVal: {
+		type: Number,
+		required: true,
 	},
-	modifiedDate: {
+	ppmVal: {
+		type: Number,
+		required: true,
+	},
+	createdDate: {
 		type: Date,
 		default: Date.now,
 	},

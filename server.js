@@ -26,7 +26,7 @@ const options = {
 const client = mqtt.connect(options);
 client.on('connect', function () {
 	console.log('Connected');
-	client.subscribe('demo', function (err) {
+	client.subscribe('demo20173078', function (err) {
 		if (!err) {
 			console.log('Subcribing to MQTT Broker!');
 		}
@@ -56,6 +56,7 @@ db.once('open', () => {
 			const sensor = new Sensor({
 				humidityAir: content.humidityAir,
 				temperature: content.temperature,
+				gasVal: content.gasVal,
 			});
 			const savedSensor = await sensor.save();
 			console.log('[Saved DB] =>', savedSensor);
