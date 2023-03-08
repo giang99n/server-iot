@@ -7,15 +7,15 @@ const auth = require('../middlewares/auth');
 // router.get('/', auth(['customer', 'admin']), async (req, res) => {
 router.get('/', async (req, res) => {
     try {
-        console.log(req.query.begin);
-        console.log(req.query.end);
         //ngày bắt đầu
-        let datebegin = moment(Number.parseInt(req.query.begin));
+        let datebegin = moment(Number.parseInt(req.query.begin)/1000);
         //ngày kết thúc
-        let dateend = moment(Number.parseInt(req.query.end));
+        let dateend = moment(Number.parseInt(req.query.end)/1000);
         //tính khoảng cách hai mốc thời gian
+  
         let start = datebegin.valueOf();
         let end = dateend.valueOf();
+    
         let range = end - start;
         let miniRange = range / 20; //20 khoảng thời gian
         const rs2 = await Sensor.findOne({
@@ -76,28 +76,35 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/create', async (req, res) => {
-    const dateString = '2023-03-05';
-    const date = new Date(dateString);
-    const timeStart  = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours()-req.body.time);
-    const timeEnd = new Date(timeStart.getTime()+ (3600000));
+// router.post('/create', async (req, res) => {
+//     const dateString = '2023-03-05';
+//     const date = new Date(dateString);
+//     const timeStart  = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours()-req.body.time);
+//     const timeEnd = new Date(timeStart.getTime()+ (3600000));
 
-    console.log(timeStart);
-    console.log(timeEnd);
-    // const device = new Sensor({
-    //     humidityAir: req.body.humidityAir,
-    //     temperature: req.body.temperature,
-    //     gasVal: req.body.gasVal,
-    //     ppmVal: req.body.ppmVal,
-    //     createdDate: time
+//     console.log(timeStart);
+//     console.log(timeEnd);
+//     let currentTime = new Date(timeStart);
+//     while (currentTime < timeEnd) {
+//         const device = new Sensor({
+//             humidityAir: req.body.humidityAir,
+//             temperature: req.body.temperature,
+//             gasVal: req.body.gasVal,
+//             ppmVal: req.body.ppmVal,
+//             createdDate: currentTime
+//         });
+//           try {
+//             const savedDevice = await device.save();
+//             //res.status(200).json(savedDevice);
+//         } catch (err) {
+//             res.status(400).json({ message: err.message });
+//         }
+//         currentTime.setMinutes(currentTime.getMinutes() + 10);
+//     }
+//     console.log('111');
 
-    // });
-    // try {
-    //     const savedDevice = await device.save();
-    //     res.status(200).json(savedDevice);
-    // } catch (err) {
-    //     res.status(400).json({ message: err.message });
-    // }
-});
+    
+  
+// });
 
 module.exports = router;
