@@ -52,14 +52,14 @@ db.once('open', () => {
 		try {
 			let content = JSON.parse(message.toString());
 			console.log("content" + content);
-			const currentTime = new Date().getTime();
+			// const currentTime = new Date().getTime();
 
-			if (content.gasVal > 600 && currentTime - lastLogTime >= 600000) {
-				clientsms.messages
-					.create({ body: "Phat hien khi gas, hay kiem tra", from: "+13156108151", to: "+84868349331" })
-					.then(message => console.log(message.sid));
-				lastLogTime = currentTime;
-			}
+			// if (content.gasVal > 600 && currentTime - lastLogTime >= 600000) {
+			// 	clientsms.messages
+			// 		.create({ body: "Phat hien khi gas, hay kiem tra", from: "+13156108151", to: "+84868349331" })
+			// 		.then(message => console.log(message.sid));
+			// 	lastLogTime = currentTime;
+			// }
 
 			//Save to db
 			//Create a new Sensor
