@@ -43,7 +43,7 @@ router.get('/userList', async (req, res) => {
             const users =await  User.find(query);
             return res.status(200).json({
                 code:200,
-                users
+                user:users.reverse(),
             });
     
     } catch (error) {
