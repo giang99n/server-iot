@@ -11,7 +11,7 @@ const Sensor = require('./models/Sensor');
 const mqtt = require('mqtt')
 
 const accountSid = "ACf7576834793c6a73350507af5fc4c341";
-const authToken = "40285c6b2d96784b45a514e9c0f3200d";
+const authToken = "b79657a7c457e2340cce1a00d530e7de";
 const clientsms = require("twilio")(accountSid, authToken);
 
 // clientsms.messages
