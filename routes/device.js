@@ -93,7 +93,9 @@ router.post('/create', async (req, res) => {
         installationDate: req.body.installationDate,
         note: req.body.note,
         room: req.body.room,
-        status: req.body.status
+        status: req.body.status,
+        isControl : req.body.isControl,
+        statusRequest: req.body.statusRequest
     });
     try {
         const savedDevice = await device.save();

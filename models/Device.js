@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
 	},
 	statusRequest:{
 		type: Boolean,
-		default: true,
+		default: false,
 	},
 	isControl:{
 		type: Boolean,
