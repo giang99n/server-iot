@@ -11,7 +11,7 @@ const Sensor = require('./models/Sensor');
 const mqtt = require('mqtt')
 
 const accountSid = "ACf7576834793c6a73350507af5fc4c341";
-const authToken = "9d5fb086575622a24f62296b6a436de5";
+const authToken = "40285c6b2d96784b45a514e9c0f3200d";
 const clientsms = require("twilio")(accountSid, authToken);
 
 // clientsms.messages
@@ -52,17 +52,18 @@ db.once('open', () => {
 		try {
 			let content = JSON.parse(message.toString());
 			console.log("content" + content);
-			// const currentTime = new Date().getTime();
+			 const currentTime = new Date().getTime();
 
-			// if (content.gasVal > 600 && currentTime - lastLogTime >= 600000) {
-			// 	clientsms.messages
-			// 		.create({ body: "Phat hien khi gas, hay kiem tra", from: "+13156108151", to: "+84868349331" })
-			// 		.then(message => console.log(message.sid));
-			// 	lastLogTime = currentTime;
-			// }
+			if (content.gasVal > 600 && currentTime - lastLogTime >= 600000) {
+				clientsms.messages
+					.create({ body: "Phat hien khi gas, hay kiem tra", from: "+13156108151", to: "+84868349331" })
+					.then(message => console.log(message.sid));
+				console.log('ss');
+				lastLogTime = currentTime;
+			}
 
 			//Save to db
-			//Create a new Sensor
+			
 			const sensor = new Sensor({
 				humidityAir: content.humidityAir,
 				temperature: content.temperature,

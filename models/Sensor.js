@@ -15,7 +15,6 @@ const sensorSchema = new mongoose.Schema({
 	},
 	ppmVal: {
 		type: Number,
-		required: true,
 	},
 	createdDate: {
 		type: Date,
