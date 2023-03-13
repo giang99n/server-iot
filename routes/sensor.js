@@ -107,4 +107,35 @@ router.get('/', async (req, res) => {
   
 // });
 
+// router.post('/createdata', async (req, res) => {
+//     const dateString = '2023-03-14';
+//     const date = new Date(dateString);
+//     const timeStart  = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours()-req.body.time);
+//     const timeEnd = new Date(timeStart.getTime()+ (3600000));
+
+//     console.log(timeStart);
+//     console.log(timeEnd);
+//     let currentTime = new Date(timeStart);
+//     while (currentTime < timeEnd) {
+//         const device = new Sensor({
+//             humidityAir: req.body.humidityAir,
+//             temperature: req.body.temperature,
+//             gasVal: req.body.gasVal,
+//             ppmVal: req.body.ppmVal,
+//             createdDate: currentTime
+//         });
+//           try {
+//             const savedDevice = await device.save();
+//             //res.status(200).json(savedDevice);
+//         } catch (err) {
+//             res.status(400).json({ message: err.message });
+//         }
+//         currentTime.setMinutes(currentTime.getMinutes() + 10);
+//     }
+//     console.log('111');
+
+    
+  
+// });
+
 module.exports = router;
