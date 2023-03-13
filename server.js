@@ -58,7 +58,7 @@ db.once('open', () => {
 				clientsms.messages
 					.create({ body: "Phat hien khi gas, hay kiem tra", from: "+13156108151", to: "+84868349331" })
 					.then(message => console.log(message.sid));
-				console.log('ss');
+				//console.log('ss');
 				lastLogTime = currentTime;
 			}
 
