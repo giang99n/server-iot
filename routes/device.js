@@ -20,13 +20,13 @@ router.get('/listDevice', async (req, res) => {
 
             Device.find({}, function(err, devices) {
                 return res.status(200).json({
-                    devices,
+                    devices: devices.reverse(),
                 });
               });
         }else{
             Device.find({userId: [req.query.userId]}, function(err, devices) {
                 return res.status(200).json({
-                    devices,
+                    devices: devices.reverse(),
                 });
               });
         }
