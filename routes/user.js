@@ -290,7 +290,7 @@ router.get('/userRequest', async (req,res)=>{
         var arrayResult = [];
         const users = await User.find(query);
         await Promise.all(users.map(async (user) => {
-            const devices = await Device.find({userId: user._id, status:false });
+            const devices = await Device.find({userId: user._id, statusRequest:true });
             if(devices.length > 0){
                 arrayResult.push({
                     user,
